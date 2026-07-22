@@ -161,7 +161,7 @@
     grid-template-columns: 8rem minmax(0, 1fr);
   }
 
-  .register-page {
+  .register-layout {
     gap: var(--space-10);
   }
 }
@@ -279,7 +279,7 @@
 
   .profile-story,
   .video-facade,
-  .register-page,
+  .register-layout,
   .privacy-summary,
   .public-footer__inner {
     grid-template-columns: minmax(0, 1fr);
@@ -304,10 +304,6 @@
 
   .register-intro {
     position: static;
-  }
-
-  .privacy-summary {
-    grid-column: auto;
   }
 
   .public-footer__inner {

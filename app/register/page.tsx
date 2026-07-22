@@ -27,23 +27,25 @@ export default async function RegisterPage({
 
   return (
     <main id="main-content" className="register-page page-frame">
-      <section className="register-intro">
-        <p className="eyebrow">Private registration</p>
-        <h1>One request. Only what the introduction needs.</h1>
-        <p>
-          This form goes to the private Phase 0 store. It does not create an
-          account or collect payment.
-        </p>
-        <div className="register-intro__limits">
-          <span>Student first name only</span>
-          <span>No birthdate</span>
-          <span>No school field</span>
-        </div>
-      </section>
+      <div className="register-layout">
+        <section className="register-intro">
+          <p className="eyebrow">Private registration</p>
+          <h1>One request. Only what the introduction needs.</h1>
+          <p>
+            This form goes to the private Phase 0 store. It does not create an
+            account or collect payment.
+          </p>
+          <div className="register-intro__limits">
+            <span>Student first name only</span>
+            <span>No birthdate</span>
+            <span>No school field</span>
+          </div>
+        </section>
 
-      <section className="register-surface">
-        <RegistrationForm defaultTeacher={selectedTeacher} />
-      </section>
+        <section className="register-surface">
+          <RegistrationForm defaultTeacher={selectedTeacher} />
+        </section>
+      </div>
 
       <section className="privacy-summary" id="privacy-summary">
         <div>

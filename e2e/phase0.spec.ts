@@ -35,6 +35,34 @@ test.describe("Phase 0 public routes", () => {
     });
   }
 
+  test("register sticky intro never overlaps the privacy summary while scrolling", async ({
+    page,
+  }) => {
+    // Given a short laptop viewport where the sticky intro travels furthest
+    await page.setViewportSize({ width: 1280, height: 620 });
+    await page.goto("/register");
+
+    // When scrolling through the page in steps
+    const total = await page.evaluate(() => document.body.scrollHeight);
+    for (const fraction of [0.25, 0.5, 0.75, 1]) {
+      await page.evaluate(
+        (y) => window.scrollTo(0, y),
+        Math.floor((total - 620) * fraction),
+      );
+      await page.waitForTimeout(150);
+
+      // Then the intro's box stays above the privacy summary's box
+      const intro = await page.locator(".register-intro").boundingBox();
+      const privacy = await page.locator(".privacy-summary").boundingBox();
+      if (intro && privacy) {
+        expect(
+          intro.y + intro.height,
+          `intro bottom must not cross privacy top at scroll ${fraction}`,
+        ).toBeLessThanOrEqual(privacy.y + 1);
+      }
+    }
+  });
+
   test("teacher videos make no third-party request before an explicit click", async ({
     page,
   }) => {
