@@ -1,0 +1,6 @@
+.omc/
+.codegraph/
+node_modules/
+.next/
+.env*
+!.env.example
