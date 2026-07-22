@@ -167,3 +167,11 @@ _(Process note: the first round-5 attempt used a mangled thread ID; the resume f
 
 ---
 **Act 2 complete: APPROVED after 5 rounds (4 REVISE → 1 APPROVED). Awaiting user sign-off for Act 3 (build).**
+
+## Act 3 — Build
+
+### Round 1 — Codex build (2026-07-21/22)
+Josh launched write-mode build via .handoff/run-codex-build.sh (Claude classifier-blocked from --yolo). Codex implemented Phase 0 per the frozen spec: hub roster page, 3 SSG teacher profiles, click-to-load video facades, registration form + server action, JSONL/Postgres store with idempotency, migration, docs templates (DATA-PROTECTION-RECORD, ADMIN-DISCLOSURE), plus self-added vitest (15 pass) and Playwright (27 pass) suites. Reported deviations: none.
+
+### Claude's verdict — PASSED
+Independently verified: (1) proof command `npm run build && npm run lint` run by Claude — build clean (7 static pages: /, 3 profiles, /register dynamic), eslint zero warnings; (2) scope grep for stripe/auth/session/dashboard/cookies — no prohibited features present; (3) code review of the security-critical surface — strict allowlisted zod schema with consent literal(true) and teacher-slug validation, serialized JSONL writes + Postgres expression-index ON CONFLICT idempotency (migration matches store columns), in-memory per-IP rate limiter, video facades make zero third-party requests pre-click (youtube-nocookie / vimeo dnt=1), permanent non-affiliation disclaimer in content. Not verified visually: house-style design compliance (deferred — review in browser before deploy). Awaiting commit sign-off.

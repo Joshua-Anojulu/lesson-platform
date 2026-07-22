@@ -1,0 +1,348 @@
+.public-footer {
+  border-top: 1px solid var(--border-default);
+  background: var(--surface-secondary);
+}
+
+.public-footer__inner {
+  display: grid;
+  width: min(calc(100% - 3rem), var(--content-width));
+  min-height: 16rem;
+  margin-inline: auto;
+  padding-block: var(--space-12);
+  grid-template-columns: 0.6fr minmax(18rem, 1.2fr) auto;
+  align-items: start;
+  gap: clamp(var(--space-6), 5vw, var(--space-16));
+}
+
+.public-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.public-footer__brand p,
+.public-footer__disclaimer {
+  margin: 0;
+}
+
+.public-footer__disclaimer {
+  color: var(--text-secondary);
+}
+
+.public-footer__links {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero__copy > * {
+    animation: hero-enter 720ms var(--ease-emphasis) both;
+  }
+
+  .home-hero__copy > :nth-child(2) {
+    animation: none;
+  }
+
+  .home-hero__copy > :nth-child(3) {
+    animation-delay: 150ms;
+  }
+
+  .home-hero__copy > :nth-child(4) {
+    animation-delay: 220ms;
+  }
+
+  .roster-stage__card {
+    animation: card-arrive 820ms var(--ease-emphasis) both;
+  }
+
+  .roster-stage__card--2 {
+    animation-delay: 100ms;
+  }
+
+  .roster-stage__card--3 {
+    animation-delay: 200ms;
+  }
+
+  @supports (animation-timeline: view()) {
+    .teacher-card,
+    .profile-story,
+    .video-facade {
+      animation: section-reveal both var(--ease-emphasis);
+      animation-timeline: view();
+      animation-range: entry 8% cover 28%;
+    }
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-arrive {
+  from {
+    opacity: 0;
+    translate: 0 3rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .action:hover,
+  .action:active,
+  .teacher-card__link:hover,
+  .teacher-card__link:active,
+  .roster-stage__card,
+  .roster-stage__card:hover,
+  .roster-stage__card:active {
+    transform: none !important;
+    translate: none !important;
+  }
+}
+
+@media (max-width: 64rem) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.75fr);
+    gap: var(--space-10);
+  }
+
+  .home-hero h1 {
+    font-size: clamp(3rem, 6.6vw, 5.5rem);
+  }
+
+  .roster-stage {
+    min-height: 31rem;
+  }
+
+  .roster-stage__card {
+    width: 94%;
+    grid-template-columns: 6.5rem 1fr;
+  }
+
+  .teacher-card__link {
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+
+  .register-page {
+    gap: var(--space-10);
+  }
+}
+
+@media (max-width: 48rem) {
+  .page-frame,
+  .site-header__inner,
+  .home-hero,
+  .public-footer__inner {
+    width: min(calc(100% - 2rem), var(--content-width));
+  }
+
+  .site-header__inner {
+    min-height: 4rem;
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding-block: var(--space-12) var(--space-16);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+
+  .home-hero h1 {
+    max-width: none;
+    font-size: clamp(2.75rem, 13vw, 3.5rem);
+  }
+
+  .home-hero__lead {
+    font-size: 1rem;
+  }
+
+  .roster-stage {
+    display: grid;
+    min-height: auto;
+    gap: var(--space-3);
+    perspective: none;
+  }
+
+  .roster-stage__orbit {
+    display: none;
+  }
+
+  .roster-stage__card,
+  .roster-stage__card--1,
+  .roster-stage__card--2,
+  .roster-stage__card--3,
+  .roster-stage__card:hover,
+  .roster-stage__card--1:hover,
+  .roster-stage__card--2:hover,
+  .roster-stage__card--3:hover {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 7.5rem;
+    grid-template-columns: 6.25rem 1fr;
+    transform: none;
+  }
+
+  .roster-stage__initials {
+    min-height: 6.75rem;
+  }
+
+  .affiliation-notice {
+    margin-block: var(--space-6) var(--space-16);
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .teacher-roster {
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  .teacher-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .teacher-grid > :first-child {
+    grid-row: auto;
+  }
+
+  .teacher-card__link,
+  .teacher-card--featured .teacher-card__link {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(14rem, 0.8fr) auto;
+  }
+
+  .teacher-card__art {
+    min-height: 14rem;
+  }
+
+  .registration-callout {
+    margin-bottom: var(--space-16);
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .profile-hero {
+    min-height: auto;
+    padding-block: var(--space-12);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .profile-hero__art {
+    min-height: 24rem;
+  }
+
+  .profile-hero__rate {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .profile-story,
+  .video-facade,
+  .register-page,
+  .privacy-summary,
+  .public-footer__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .profile-story {
+    padding-block: var(--space-12) var(--space-16);
+    gap: var(--space-6);
+  }
+
+  .video-facade {
+    min-height: 0;
+  }
+
+  .video-facade__poster {
+    min-height: 18rem;
+  }
+
+  .register-page {
+    padding-block: var(--space-12);
+  }
+
+  .register-intro {
+    position: static;
+  }
+
+  .privacy-summary {
+    grid-column: auto;
+  }
+
+  .public-footer__inner {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 32rem) {
+  .site-nav > a:not(.action) {
+    display: none;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(2.35rem, 11vw, 3rem);
+  }
+
+  .action-group {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .action-group .action {
+    width: 100%;
+  }
+
+  .form-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-form {
+    padding: var(--space-4);
+  }
+
+  .teacher-card__meta {
+    align-items: start;
+    flex-direction: column;
+  }
+}

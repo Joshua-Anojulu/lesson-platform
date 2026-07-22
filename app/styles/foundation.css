@@ -1,0 +1,286 @@
+
+:root {
+  --surface-primary: #0b0d10;
+  --surface-secondary: #12161c;
+  --surface-elevated: #181e27;
+  --surface-pressed: #202836;
+  --text-primary: #f4f7fb;
+  --text-on-accent: #ffffff;
+  --text-secondary: #aab4c0;
+  --text-tertiary: #788493;
+  --border-default: #2a3442;
+  --border-highlight: #3b4656;
+  --border-control: #657286;
+  --accent-primary: #1d64ef;
+  --accent-hover: #0f56d7;
+  --accent-text: #8bb1ff;
+  --accent-soft: #173367;
+  --status-error: #ff8290;
+  --status-success: #7dd3a6;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --radius-outer: 1.75rem;
+  --radius-surface: 1.25rem;
+  --radius-control: 0.75rem;
+  --content-width: 90rem;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --surface-primary: #f5f7fb;
+    --surface-secondary: #edf1f6;
+    --surface-elevated: #ffffff;
+    --surface-pressed: #e2e8f1;
+    --text-primary: #10131a;
+    --text-secondary: #586477;
+    --text-tertiary: #6b7788;
+    --border-default: #cad3df;
+    --border-highlight: #e4e9f0;
+    --border-control: #78869a;
+    --accent-primary: #165dff;
+    --accent-hover: #0049cc;
+    --accent-text: #0049cc;
+    --accent-soft: #dce7ff;
+    --status-error: #b42336;
+    --status-success: #176b43;
+    color-scheme: light;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--surface-primary);
+}
+
+body {
+  margin: 0;
+  min-width: 20rem;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--accent-primary) 9%, transparent), transparent 26rem),
+    var(--surface-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary), sans-serif;
+  font-size: 1rem;
+  font-weight: 430;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  position: fixed;
+  z-index: 8;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.035;
+  background-image: repeating-radial-gradient(circle at 15% 20%, var(--text-primary) 0 0.5px, transparent 0.7px 4px);
+  background-size: 7px 7px;
+}
+
+::selection {
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 20;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  border-radius: 999px;
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  transform: translateY(-160%);
+  transition: transform 180ms var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.page-frame {
+  width: min(calc(100% - 3rem), var(--content-width));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  z-index: 7;
+  top: 0;
+  border-bottom: 1px solid var(--border-default);
+  background: color-mix(in srgb, var(--surface-primary) 96%, transparent);
+}
+
+.site-header__inner {
+  display: flex;
+  width: min(calc(100% - 3rem), var(--content-width));
+  min-height: 4.5rem;
+  margin-inline: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.brand {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand__mark {
+  display: inline-grid;
+  width: 2.25rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-3), 2vw, var(--space-8));
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.site-nav > a:not(.action) {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 180ms var(--ease-out);
+}
+
+.site-nav > a:not(.action):hover {
+  color: var(--text-primary);
+}
+
+.action {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 180ms var(--ease-out),
+    background-color 180ms var(--ease-out),
+    border-color 180ms var(--ease-out),
+    color 180ms var(--ease-out);
+}
+
+.action:hover {
+  transform: translateY(-2px);
+}
+
+.action:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.action:disabled {
+  cursor: wait;
+  opacity: 0.6;
+  transform: none;
+}
+
+.action--primary {
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+}
+
+.action--primary:hover {
+  background: var(--accent-hover);
+}
+
+.action--secondary {
+  border-color: var(--border-default);
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.action--secondary:hover {
+  border-color: var(--accent-primary);
+  background: var(--surface-elevated);
+}
+
+.action--compact {
+  min-height: 2.75rem;
+  padding-inline: 1.1rem;
+}
+
+.action-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent-text);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
