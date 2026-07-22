@@ -1,4 +1,6 @@
 .omc/
+.handoff/
+data/
 .codegraph/
 node_modules/
 .next/
