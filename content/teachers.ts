@@ -13,6 +13,11 @@ export type Teacher = {
   readonly slug: string;
   readonly name: string;
   readonly initials: string;
+  readonly image: {
+    readonly src: string;
+    readonly alt: string;
+    readonly position: string;
+  };
   readonly instruments: readonly string[];
   readonly shortBio: string;
   readonly bio: readonly string[];
@@ -27,6 +32,11 @@ export const teachers = [
     slug: "maya-torres",
     name: "Maya Torres",
     initials: "MT",
+    image: {
+      src: "/images/clarinet-keys-hands.webp",
+      alt: "Hands pressing the silver keys of a clarinet",
+      position: "70% center",
+    },
     instruments: ["Clarinet", "Saxophone"],
     shortBio:
       "Warm, structured coaching for developing woodwind players who want a clearer sound and a more confident practice routine.",
@@ -53,6 +63,11 @@ export const teachers = [
     slug: "caleb-okafor",
     name: "Caleb Okafor",
     initials: "CO",
+    image: {
+      src: "/images/trumpet-valves-hands.webp",
+      alt: "A hand pressing trumpet valves in natural window light",
+      position: "72% center",
+    },
     instruments: ["Trumpet", "French horn"],
     shortBio:
       "Brass lessons built around healthy air, reliable range, and the small wins that keep young players motivated.",
@@ -79,6 +94,11 @@ export const teachers = [
     slug: "nadine-brooks",
     name: "Nadine Brooks",
     initials: "NB",
+    image: {
+      src: "/images/cello-bow-strings.webp",
+      alt: "A bow meeting cello strings during a lesson",
+      position: "48% center",
+    },
     instruments: ["Cello", "Double bass"],
     shortBio:
       "Patient string instruction that turns posture, bow control, and ensemble music into a steady path forward.",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -61,12 +62,16 @@ export default async function TeacherPage({ params }: TeacherPageProps) {
             </Link>
           </div>
         </div>
-        <div
-          className={`profile-hero__art profile-hero__art--${teacher.slug}`}
-          aria-hidden="true"
-        >
-          <span>{teacher.initials}</span>
-          <i />
+        <div className={`profile-hero__art profile-hero__art--${teacher.slug}`}>
+          <Image
+            src={teacher.image.src}
+            width={1600}
+            height={900}
+            sizes="(max-width: 768px) calc(100vw - 32px), 48vw"
+            alt={teacher.image.alt}
+            style={{ objectPosition: teacher.image.position }}
+            preload
+          />
           <b>{teacher.instruments[0]}</b>
         </div>
         <div className="profile-hero__rate">
@@ -85,6 +90,15 @@ export default async function TeacherPage({ params }: TeacherPageProps) {
       <section className="profile-story page-frame">
         <div className="profile-story__heading">
           <h2>A lesson room with a clear next step.</h2>
+          <div className="profile-story__media">
+            <Image
+              src="/images/sheet-music-band-hall.webp"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) calc(100vw - 32px), 42vw"
+              alt="Sheet music waiting on a stand in warm band-hall light"
+            />
+          </div>
         </div>
         <div className="profile-story__copy">
           {teacher.bio.map((paragraph) => (

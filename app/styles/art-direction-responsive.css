@@ -1,0 +1,522 @@
+@media (hover: hover) {
+  .site-nav > a:not(.action):hover {
+    color: var(--text-primary);
+  }
+
+  .site-nav > a:not(.action):hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .action:hover {
+    transform: translateY(-2px);
+  }
+
+  .action--primary:hover {
+    background: var(--accent-hover);
+  }
+
+  .action--secondary:hover {
+    border-color: var(--accent-primary);
+    background: var(--surface-secondary);
+  }
+
+  .roster-stage__card:hover {
+    color: var(--accent-text);
+  }
+
+  .teacher-card__link:hover {
+    background: var(--surface-elevated);
+    box-shadow: 0 1.75rem 5rem rgb(0 0 0 / 28%);
+    transform: translateY(-0.4rem);
+  }
+
+  .teacher-card__link:hover .teacher-card__art img {
+    transform: scale(1.045);
+  }
+
+  .form-field input:hover,
+  .form-field select:hover,
+  .form-field textarea:hover {
+    border-color: var(--accent-primary);
+    background: var(--surface-elevated);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero__copy > * {
+    animation: editorial-rise 800ms var(--ease-emphasis) both;
+  }
+
+  .home-hero__copy > :nth-child(2) {
+    animation-delay: 70ms;
+  }
+
+  .home-hero__copy > :nth-child(3) {
+    animation-delay: 150ms;
+  }
+
+  .home-hero__copy > :nth-child(4) {
+    animation-delay: 220ms;
+  }
+
+  .home-hero__lead {
+    animation: none;
+  }
+
+  .roster-stage {
+    animation: media-settle 1100ms var(--ease-emphasis) both;
+  }
+
+  .roster-stage__card {
+    animation: index-enter 760ms var(--ease-emphasis) both;
+  }
+
+  .roster-stage__card--1 {
+    animation-delay: 260ms;
+  }
+
+  .roster-stage__card--2 {
+    animation-delay: 340ms;
+  }
+
+  .roster-stage__card--3 {
+    animation-delay: 420ms;
+  }
+
+  .profile-hero__identity > *,
+  .register-intro > * {
+    animation: editorial-rise 800ms var(--ease-emphasis) both;
+  }
+
+  .profile-hero__identity > :nth-child(2),
+  .register-intro > :nth-child(2) {
+    animation-delay: 70ms;
+  }
+
+  .profile-hero__identity > :nth-child(3),
+  .register-intro > :nth-child(3) {
+    animation-delay: 150ms;
+  }
+
+  .profile-hero__identity > :nth-child(4),
+  .register-intro > :nth-child(4) {
+    animation-delay: 220ms;
+  }
+
+  .profile-hero__art,
+  .register-surface {
+    animation: media-settle 1100ms var(--ease-emphasis) both;
+  }
+
+  .video-facade--loaded {
+    animation: consent-switch 420ms var(--ease-out) both;
+  }
+
+  @supports (animation-timeline: view()) {
+    .teacher-card,
+    .profile-story,
+    .video-facade,
+    .affiliation-notice,
+    .registration-callout,
+    .privacy-summary {
+      animation: view-settle both var(--ease-emphasis);
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+
+    .teacher-card__art img,
+    .profile-story__media img,
+    .registration-callout__media img {
+      animation: image-breathe both var(--ease-emphasis);
+      animation-timeline: view();
+      animation-range: entry 0% cover 65%;
+    }
+  }
+}
+
+@keyframes editorial-rise {
+  from {
+    transform: translateY(1.6rem);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes media-settle {
+  from {
+    transform: translateY(1.5rem) scale(1.025);
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes index-enter {
+  from {
+    transform: translateX(2rem);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes view-settle {
+  from {
+    transform: translateY(2rem) scale(0.985);
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes image-breathe {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes consent-switch {
+  from {
+    clip-path: inset(8% round var(--radius-media));
+  }
+
+  to {
+    clip-path: inset(0 round var(--radius-media));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+
+  .action:hover,
+  .action:active,
+  .teacher-card,
+  .teacher-card__link:hover,
+  .teacher-card__link:active,
+  .teacher-card__art img,
+  .roster-stage,
+  .roster-stage__card,
+  .profile-hero__art,
+  .register-surface {
+    clip-path: none !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 64rem) {
+  .home-hero__copy {
+    grid-column: 1 / span 7;
+  }
+
+  .roster-stage {
+    grid-column: 7 / -1;
+    min-height: 35rem;
+  }
+
+  .teacher-card__link {
+    grid-template-columns: 9rem minmax(0, 1fr);
+  }
+
+  .profile-hero__identity {
+    grid-column: 1 / span 5;
+  }
+
+  .profile-hero__art {
+    grid-column: 6 / -1;
+  }
+
+  .register-intro {
+    grid-column: 1 / span 5;
+  }
+
+  .register-surface {
+    grid-column: 6 / -1;
+  }
+}
+
+@media (max-width: 48rem) {
+  .page-frame,
+  .site-header__inner,
+  .home-hero,
+  .public-footer__inner {
+    width: min(calc(100% - 2rem), var(--content-width));
+  }
+
+  .site-header__inner {
+    min-height: 4.25rem;
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding-block: var(--space-12) var(--space-16);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+
+  .home-hero__copy {
+    display: flex;
+    min-width: 0;
+    min-height: calc(100dvh - 10rem);
+    grid-column: auto;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .home-hero__lead {
+    font-size: 1rem;
+  }
+
+  .roster-stage {
+    min-height: 34rem;
+    grid-column: auto;
+  }
+
+  .affiliation-notice {
+    margin-block: var(--space-24);
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .affiliation-notice__media,
+  .affiliation-notice__label,
+  .affiliation-notice > div:last-child {
+    grid-column: auto;
+  }
+
+  .affiliation-notice__media,
+  .affiliation-notice__media img {
+    min-height: 13rem;
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .section-heading h2,
+  .registration-callout h2,
+  .profile-story h2,
+  .privacy-summary h2 {
+    font-size: clamp(2.25rem, 11vw, 3.75rem);
+  }
+
+  .teacher-roster {
+    padding-block: var(--space-12) var(--space-24);
+  }
+
+  .teacher-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .teacher-grid > :first-child,
+  .teacher-grid > :nth-child(2),
+  .teacher-grid > :nth-child(3) {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .teacher-card__link,
+  .teacher-card--featured .teacher-card__link {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .teacher-card__art,
+  .teacher-card__art img {
+    min-height: 17rem;
+    aspect-ratio: 16 / 10;
+  }
+
+  .teacher-card__content {
+    min-height: 15rem;
+  }
+
+  .registration-callout {
+    margin-bottom: var(--space-24);
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .registration-callout__media,
+  .registration-callout > div:nth-child(2),
+  .registration-callout > .action {
+    grid-column: auto;
+  }
+
+  .registration-callout__media,
+  .registration-callout__media img {
+    min-height: 19rem;
+  }
+
+  .registration-callout > .action {
+    justify-self: start;
+  }
+
+  .profile-hero {
+    min-height: auto;
+    padding-block: var(--space-12) var(--space-16);
+    grid-template-columns: 1fr;
+  }
+
+  .profile-hero__identity,
+  .profile-hero__art,
+  .profile-hero__rate {
+    grid-column: auto;
+  }
+
+  .profile-hero__identity {
+    padding-right: 0;
+  }
+
+  .profile-hero__identity h1 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .profile-hero__art,
+  .profile-hero__art img {
+    min-height: 28rem;
+  }
+
+  .profile-hero__rate {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-story {
+    padding-block: var(--space-12) var(--space-24);
+    grid-template-columns: 1fr;
+  }
+
+  .profile-story__heading,
+  .profile-story__copy {
+    grid-column: auto;
+  }
+
+  .profile-story__copy {
+    padding-top: var(--space-6);
+  }
+
+  .video-facade {
+    min-height: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .video-facade__poster,
+  .video-facade__poster img {
+    min-height: 21rem;
+  }
+
+  .register-page {
+    padding-block: var(--space-12);
+  }
+
+  .register-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .register-intro,
+  .register-surface {
+    grid-column: auto;
+  }
+
+  .register-intro {
+    position: static;
+    padding-right: 0;
+  }
+
+  .register-intro h1 {
+    font-size: clamp(2.75rem, 13vw, 4.5rem);
+  }
+
+  .privacy-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-summary > div:first-child,
+  .privacy-summary__copy {
+    grid-column: auto;
+  }
+
+  .public-footer__inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .public-footer__brand,
+  .public-footer__disclaimer,
+  .public-footer__links {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 32rem) {
+  .brand > span:last-child {
+    display: none;
+  }
+
+  .site-nav {
+    gap: var(--space-4);
+  }
+
+  .home-hero h1 {
+    font-size: clamp(2.375rem, 10vw, 3rem);
+  }
+
+  .home-hero h1 span {
+    white-space: normal;
+  }
+
+  .action-group {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .action-group .action {
+    width: 100%;
+  }
+
+  .form-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-form {
+    padding: var(--space-5);
+  }
+
+  .teacher-card__meta {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .roster-stage__card {
+    right: var(--space-4);
+    left: var(--space-4);
+  }
+}

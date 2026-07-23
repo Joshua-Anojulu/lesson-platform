@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { AffiliationNotice } from "@/components/affiliation-notice";
@@ -12,8 +13,7 @@ export default function HomePage() {
           <p className="eyebrow">A personal lesson roster</p>
           <h1>
             <span>Find the teacher</span>
-            <span>who makes practice</span>
-            <span>click.</span>
+            <span>who makes practice click.</span>
           </h1>
           <p className="home-hero__lead">
             Browse teacher-owned profiles, teaching clips, and rates shared
@@ -29,6 +29,14 @@ export default function HomePage() {
           </div>
         </div>
         <div className="roster-stage" aria-label="Teacher roster preview">
+          <Image
+            className="roster-stage__image"
+            src="/images/hero-piano-hands.webp"
+            width={1600}
+            height={900}
+            sizes="(max-width: 768px) calc(100vw - 32px), 52vw"
+            alt="Hands playing piano keys in a quiet band rehearsal room"
+          />
           <div className="roster-stage__orbit" aria-hidden="true" />
           {teachers.map((teacher, index) => (
             <Link
@@ -72,6 +80,15 @@ export default function HomePage() {
       </section>
 
       <section className="registration-callout page-frame">
+        <div className="registration-callout__media">
+          <Image
+            src="/images/instrument-cases-band-hall.webp"
+            width={1600}
+            height={900}
+            sizes="(max-width: 768px) calc(100vw - 32px), 46vw"
+            alt="Instrument cases lined along a band-hall wall"
+          />
+        </div>
         <div>
           <h2>Know who you want to meet?</h2>
           <p>

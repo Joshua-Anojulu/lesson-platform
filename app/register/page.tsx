@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { RegistrationForm } from "@/components/registration-form";
 import { teachers } from "@/content/teachers";
@@ -40,6 +41,15 @@ export default async function RegisterPage({
             <span>No birthdate</span>
             <span>No school field</span>
           </div>
+          <div className="register-intro__media">
+            <Image
+              src="/images/sheet-music-band-hall.webp"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) calc(100vw - 32px), 38vw"
+              alt="Sheet music illuminated by a band-hall window"
+            />
+          </div>
         </section>
 
         <section className="register-surface">
@@ -51,6 +61,15 @@ export default async function RegisterPage({
         <div>
           <span className="privacy-summary__label">Privacy summary</span>
           <h2>Small by design.</h2>
+          <div className="privacy-summary__media">
+            <Image
+              src="/images/instrument-cases-band-hall.webp"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) calc(100vw - 32px), 31vw"
+              alt="Instrument cases lined along a quiet band-hall wall"
+            />
+          </div>
         </div>
         <div className="privacy-summary__copy">
           <p>

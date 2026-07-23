@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 import type { TeacherVideo } from "@/content/teachers";
@@ -34,9 +35,15 @@ export function VideoFacade({
 
   return (
     <div className="video-facade">
-      <div className="video-facade__poster" aria-hidden="true">
-        <span>{teacherInitials}</span>
-        <i />
+      <div className="video-facade__poster">
+        <Image
+          src="/images/music-stand-silhouette.webp"
+          width={1600}
+          height={900}
+          sizes="(max-width: 768px) calc(100vw - 32px), 64vw"
+          alt="An empty music stand in late-afternoon rehearsal-room light"
+        />
+        <span aria-hidden="true">{teacherInitials}</span>
       </div>
       <div className="video-facade__content">
         <span className="video-facade__duration">{video.duration}</span>

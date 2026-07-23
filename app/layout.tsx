@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Outfit } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
 import { PublicFooter } from "@/components/public-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -7,15 +7,14 @@ import { siteName } from "@/lib/site";
 
 import "./globals.css";
 
-const outfit = Outfit({
+const geist = Geist({
   subsets: ["latin"],
   variable: "--font-primary",
-  display: "swap",
+  display: "optional",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -33,7 +32,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">
           Skip to content

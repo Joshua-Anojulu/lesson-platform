@@ -2,15 +2,15 @@
 
 ## 0. Research Log
 
-- Embedded refs: shortlisted Framer, Spotify, and Nike. Picked the owner-provided `design-taste-frontend` at dials 9/8/6 with Framer as the Layer B reference because the brief calls for compressed type, black-and-cobalt contrast, purposeful motion, and a high-craft consumer surface.
-- Lazyweb: 2 desktop queries, 4 shipped screens viewed (Headspace teacher roster, GuitarTuna, Yousician, Yoodli coach directory). Kept the media-led hierarchy, immediately legible teacher identity, and direct profile-to-action path. Rejected equal-card directories and generic white marketplace grids.
-- UI/UX database: queried `music lesson teacher roster modern bold dark cobalt trustworthy parents`. Kept its energetic block composition and strong above-fold action. Rejected its purple/green palette and novelty display font because they conflict with the house-style one-accent lock and trust needs.
-- Imagen drafts: skipped because the available image generator returns a conversation-final artifact and cannot be used as an internal research lane while continuing the implementation. The shipped-screen references and the owner's explicit house style are the visual contract.
+- Owner brief: house style at design variance 9, motion intensity 8, and visual density 4. Its one-accent rule, typography constraints, photography policy, ban list, and accessibility requirements are the top-level visual contract.
+- Generated references: nine horizontal section studies under `.omo/evidence/phase0-redesign/references/`, covering the hub hero, affiliation disclosure, roster, home close, profile hero, profile story, video privacy state, registration form, and privacy close. They establish composition, hierarchy, material, and motion direction. Repository copy remains authoritative where generated text differs.
+- Production photography: eight documentary music studies under `public/images/`, generated before implementation and inspected as a contact sheet. Every image is face-free and composed as structural editorial media rather than a card thumbnail.
+- Direction selected: a late-afternoon band-hall photo essay translated into a precise product interface. Kept asymmetrical image crops, open legal copy, cold ink surfaces, silver typography, and a single signal cobalt. Rejected equal-card directories, ornamental gradients, floating glass, novelty display type, and generic marketplace chrome.
 - React runtime instrumentation: react-grab and react-scan are intentionally not shipped. The project bans trackers on minor-visited pages and heavy UI dependencies. Static react-doctor checks and real-browser QA cover development diagnostics without adding runtime instrumentation.
 
 ## 1. Atmosphere & Identity
 
-A late-evening rehearsal room translated into a precise cultural product: confident, rhythmic, and trustworthy without looking institutional. The signature is the **roster in motion**, where real teacher profile links overlap like set cards arriving on a music stand. The visual language borrows Framer's compressed geometry and electric focus, then removes pure black, Inter, generic glass, and decorative glows to honor the house style.
+A late-afternoon rehearsal room translated into a precise cultural product: candid, rhythmic, and trustworthy without looking institutional. The signature is the **documentary roster**, where real lesson details are framed by close studies of instruments and working hands. The interface uses editorial scale, uneven image geometry, and quiet product precision to make the director's personal recommendation list feel considered without making it feel official.
 
 Primary users:
 
@@ -23,28 +23,28 @@ Primary users:
 
 ### Palette
 
-| Role | Token | Dark | Light | Usage |
-|---|---|---|---|---|
-| Surface/primary | `--surface-primary` | `#0B0D10` | `#F5F7FB` | Page canvas |
-| Surface/secondary | `--surface-secondary` | `#12161C` | `#EDF1F6` | Grouped sections |
-| Surface/elevated | `--surface-elevated` | `#181E27` | `#FFFFFF` | Profile and form surfaces |
-| Surface/pressed | `--surface-pressed` | `#202836` | `#E2E8F1` | Active controls |
-| Text/primary | `--text-primary` | `#F4F7FB` | `#10131A` | Headings and body |
-| Text/secondary | `--text-secondary` | `#AAB4C0` | `#586477` | Supporting copy |
-| Text/tertiary | `--text-tertiary` | `#788493` | `#6B7788` | Metadata |
-| Border/default | `--border-default` | `#2A3442` | `#CAD3DF` | Structural outlines |
-| Border/highlight | `--border-highlight` | `#3B4656` | `#E4E9F0` | Inset top edge |
-| Accent/primary | `--accent-primary` | `#1D64EF` | `#165DFF` | Links, CTAs, focus |
-| Accent/hover | `--accent-hover` | `#0F56D7` | `#0049CC` | Interactive hover |
-| Accent/text | `--accent-text` | `#8BB1FF` | `#0049CC` | Contrast-safe accent labels and links |
-| Accent/soft | `--accent-soft` | `#173367` | `#DCE7FF` | Selected and poster surfaces |
-| Status/error | `--status-error` | `#FF8290` | `#B42336` | Form errors only |
-| Status/success | `--status-success` | `#7DD3A6` | `#176B43` | Submission confirmation only |
+| Role | Token | Value | Usage |
+|---|---|---|---|
+| Surface/primary | `--surface-primary` | `#071015` | Page canvas |
+| Surface/secondary | `--surface-secondary` | `#0C171E` | Tonal section shift |
+| Surface/elevated | `--surface-elevated` | `#111F28` | Form and media cores |
+| Surface/pressed | `--surface-pressed` | `#172934` | Active controls |
+| Text/primary | `--text-primary` | `#F2F5F3` | Headings and body |
+| Text/secondary | `--text-secondary` | `#A8B3B7` | Supporting copy |
+| Text/tertiary | `--text-tertiary` | `#77858B` | Metadata |
+| Line/subtle | `--line-subtle` | `rgba(193, 207, 211, 0.16)` | Rare structural rules |
+| Line/strong | `--line-strong` | `rgba(220, 231, 233, 0.34)` | Intentional separators |
+| Accent/primary | `--accent-primary` | `#2E68F7` | Links, CTAs, focus |
+| Accent/hover | `--accent-hover` | `#2A60E8` | Interactive hover |
+| Accent/text | `--accent-text` | `#86A8FF` | Contrast-safe accent labels |
+| Accent/soft | `--accent-soft` | `#132956` | Selected and poster surfaces |
+| Status/error | `--status-error` | `#FF8B97` | Form errors only |
+| Status/success | `--status-success` | `#77D1A4` | Submission confirmation only |
 
 ### Rules
 
 - Cobalt is the only brand accent. Error and success colors are semantic and never decorative.
-- The whole page follows one system-selected theme. No individual section flips theme.
+- The public product uses one locked deep-ink theme. Individual sections vary by tone, never by a competing palette.
 - Components use semantic variables only. Raw color values live here and in the root token declaration.
 
 ## 3. Typography
@@ -66,8 +66,8 @@ Primary users:
 
 ### Font Stack
 
-- Primary: Outfit via `next/font`, geometric but warmer than a developer-tool sans.
-- Mono: IBM Plex Mono via `next/font`, used only for rates and compact metadata.
+- Primary: Geist via `next/font`, calibrated for product precision without defaulting to Inter, Roboto, or a serif.
+- Mono: Geist Mono via `next/font`, used only for rates and compact metadata.
 - Maximum two families. No serif, Inter, Roboto, Arial, Open Sans, or Helvetica.
 
 ## 4. Spacing & Layout
@@ -87,14 +87,15 @@ All spacing intent derives from a 4px base.
 | `--space-8` | `2rem` | Component separation |
 | `--space-10` | `2.5rem` | Cluster separation |
 | `--space-12` | `3rem` | Mobile section rhythm |
-| `--space-16` | `4rem` | Desktop section rhythm |
-| `--space-20` | `5rem` | Large section pause |
-| `--space-24` | `6rem` | Maximum hero top padding |
+| `--space-16` | `4rem` | Component rhythm |
+| `--space-24` | `6rem` | Standard section pause |
+| `--space-32` | `8rem` | Large section pause |
+| `--space-36` | `9rem` | Maximum desktop pause |
 
 ### Grid
 
 - Maximum content width: 1440px.
-- Desktop: 12 conceptual columns with fluid gaps. High-variance layouts use 7/5, 8/4, and overlapping tracks.
+- Desktop: 12 conceptual columns with 24px fluid gaps. High-variance layouts use 7/5 and 8/4 splits, deliberate empty columns, and media that crosses a grid line.
 - Mobile below 768px: one strict column, 16px gutter, no rotation, negative margin, or overlapping touch target.
 - Full-height surfaces use `min-height: 100dvh`, never `100vh`.
 
@@ -112,20 +113,20 @@ All spacing intent derives from a 4px base.
 - **Structure**: anchor or submit button with label and optional short directional text mark.
 - **Variants**: primary filled cobalt, secondary tonal, text.
 - **States**: default, hover, active, focus-visible, disabled/loading for submit.
-- **Shape**: full pill for actions only; one-line labels.
+- **Shape**: 10px action radius; one-line labels.
 - **Motion**: 180ms transform and color feedback.
 
-### Teacher Profile Card
+### Teacher Profile Story
 
 - **Structure**: teacher identity, instruments, rate, short bio, profile action.
-- **Variants**: featured, standard, compact roster-stack.
+- **Variants**: featured landscape, standard portrait, compact text index.
 - **States**: default, hover, active, focus-within.
 - **Accessibility**: one stretched semantic profile link, visible focus, text remains available without motion.
-- **Motion**: cards settle into the roster and reveal on entry to communicate sequence.
+- **Motion**: image crops settle in reading order while copy remains fully visible.
 
 ### Video Facade
 
-- **Structure**: local tonal poster, clip metadata, explicit load button, iframe only after click.
+- **Structure**: local documentary poster, clip metadata, explicit load button, iframe only after click.
 - **States**: idle facade, focus, active, loaded.
 - **Accessibility**: real button, descriptive label, 16:9 reserved area, iframe title.
 - **Privacy**: no remote image, iframe, preconnect, or host request exists before activation.
@@ -158,12 +159,12 @@ All spacing intent derives from a 4px base.
 
 ## 7. Depth & Surface
 
-Strategy: tonal shift with a restrained double-bezel on interactive media and primary surfaces.
+Strategy: matte tonal shift with rare silver rules and deep image wells. Borders appear only where they clarify a control or a major surface boundary.
 
-- Outer shells: 1px semantic ring, 6px inset, 28px radius.
-- Inner cores: elevated tone, inset top highlight, 20px radius.
-- Controls: 12px radius; action buttons: pill. This is the documented shape rule.
-- Shadows are cobalt-tinted ambient depth only, never harsh black shadows or generic glass blur.
+- Outer editorial media: 20px radius.
+- Inner media and grouped surfaces: 14px radius.
+- Controls and actions: 10px radius. These three values form one nested radius system.
+- Shadows are low, cool ambient depth only, never generic glass blur or spray-on elevation.
 - A fixed 3% noise texture is produced locally with CSS, pointer-events disabled, and no external asset.
 
 ## 8. Accessibility Constraints & Accepted Debt
@@ -182,5 +183,4 @@ Strategy: tonal shift with a restrained double-bezel on interactive media and pr
 
 | Item | Location | Why accepted | Owner / Exit |
 |---|---|---|---|
-| No manual theme toggle | All public pages | System color preference is respected; a toggle is not needed for the Phase 0 task path. | Revisit only if pilot users request it. |
 | Placeholder abuse mailbox domain until deploy configuration | Public footer | The production monitored address is an owner operational decision. | `TODO(owner)`: set `NEXT_PUBLIC_ABUSE_EMAIL` before public distribution. |

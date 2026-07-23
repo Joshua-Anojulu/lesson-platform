@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import type { Teacher } from "@/content/teachers";
@@ -14,12 +15,20 @@ export function TeacherCard({ teacher, featured = false }: TeacherCardProps) {
         className="teacher-card__link"
         href={`/teachers/${teacher.slug}`}
       >
-        <div
-          className={`teacher-card__art teacher-card__art--${teacher.slug}`}
-          aria-hidden="true"
-        >
-          <span>{teacher.initials}</span>
-          <i />
+        <div className={`teacher-card__art teacher-card__art--${teacher.slug}`}>
+          <Image
+            src={teacher.image.src}
+            width={1600}
+            height={900}
+            sizes={
+              featured
+                ? "(max-width: 768px) calc(100vw - 32px), 58vw"
+                : "(max-width: 768px) calc(100vw - 32px), 34vw"
+            }
+            alt=""
+            style={{ objectPosition: teacher.image.position }}
+          />
+          <span aria-hidden="true">{teacher.initials}</span>
         </div>
         <div className="teacher-card__content">
           <div className="teacher-card__instruments">
