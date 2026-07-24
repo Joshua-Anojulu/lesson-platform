@@ -45,8 +45,10 @@ test.describe("Phase 0 public routes", () => {
     // When scrolling through the page in steps
     const total = await page.evaluate(() => document.body.scrollHeight);
     for (const fraction of [0.25, 0.5, 0.75, 1]) {
+      // behavior:"instant" bypasses the page's CSS smooth scrolling, so the
+      // measurement below never catches a mid-animation compositor frame.
       await page.evaluate(
-        (y) => window.scrollTo(0, y),
+        (y) => window.scrollTo({ top: y, behavior: "instant" }),
         Math.floor((total - 620) * fraction),
       );
       await page.waitForTimeout(150);

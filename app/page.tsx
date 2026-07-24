@@ -5,6 +5,14 @@ import { AffiliationNotice } from "@/components/affiliation-notice";
 import { TeacherCard } from "@/components/teacher-card";
 import { teachers } from "@/content/teachers";
 
+const instrumentCount = new Set(
+  teachers.flatMap((teacher) => teacher.instruments),
+).size;
+const rates = teachers
+  .map((teacher) => Number.parseInt(teacher.rate.match(/\d+/)?.[0] ?? "", 10))
+  .filter((rate) => Number.isFinite(rate));
+const rateRange = `$${Math.min(...rates)} to $${Math.max(...rates)} per 45 minutes`;
+
 export default function HomePage() {
   return (
     <main id="main-content">
@@ -38,21 +46,30 @@ export default function HomePage() {
             alt="Hands playing piano keys in a quiet band rehearsal room"
           />
           <div className="roster-stage__orbit" aria-hidden="true" />
-          {teachers.map((teacher, index) => (
-            <Link
-              className={`roster-stage__card roster-stage__card--${index + 1}`}
-              href={`/teachers/${teacher.slug}`}
-              key={teacher.slug}
-            >
-              <span className="roster-stage__initials" aria-hidden="true">
-                {teacher.initials}
-              </span>
-              <span>
-                <strong>{teacher.name}</strong>
-                <small>{teacher.instruments.join(" / ")}</small>
-              </span>
-            </Link>
-          ))}
+          <div className="roster-stage__brief">
+            <span className="roster-stage__brief-label">How it works</span>
+            <ol className="roster-stage__steps">
+              {[
+                "Send one private request",
+                "The coordinator introduces you",
+                "Schedule directly with the teacher",
+              ].map((step, index) => (
+                <li
+                  className="roster-stage__step"
+                  key={step}
+                  style={{ "--step-index": index } as React.CSSProperties}
+                >
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+        <div className="home-hero__meta">
+          <span>{teachers.length} teachers on this roster</span>
+          <span>{instrumentCount} instruments</span>
+          <span>{rateRange}</span>
+          <span>Monthly scheduling</span>
         </div>
       </section>
 

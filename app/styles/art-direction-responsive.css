@@ -21,13 +21,9 @@
     background: var(--surface-secondary);
   }
 
-  .roster-stage__card:hover {
-    color: var(--accent-text);
-  }
-
   .teacher-card__link:hover {
     background: var(--surface-elevated);
-    box-shadow: 0 1.75rem 5rem rgb(0 0 0 / 28%);
+    box-shadow: 0 1.25rem 3.5rem rgb(20 23 21 / 12%);
     transform: translateY(-0.4rem);
   }
 
@@ -68,20 +64,9 @@
     animation: media-settle 1100ms var(--ease-emphasis) both;
   }
 
-  .roster-stage__card {
+  .roster-stage__step {
     animation: index-enter 760ms var(--ease-emphasis) both;
-  }
-
-  .roster-stage__card--1 {
-    animation-delay: 260ms;
-  }
-
-  .roster-stage__card--2 {
-    animation-delay: 340ms;
-  }
-
-  .roster-stage__card--3 {
-    animation-delay: 420ms;
+    animation-delay: calc(260ms + 80ms * var(--step-index, 0));
   }
 
   .profile-hero__identity > *,
@@ -215,7 +200,7 @@
   .teacher-card__link:active,
   .teacher-card__art img,
   .roster-stage,
-  .roster-stage__card,
+  .roster-stage__step,
   .profile-hero__art,
   .register-surface {
     clip-path: none !important;
@@ -285,6 +270,12 @@
 
   .home-hero h1 {
     font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .home-hero__meta {
+    grid-column: auto;
+    grid-row: auto;
+    padding-right: 0;
   }
 
   .home-hero__lead {
@@ -515,7 +506,7 @@
     flex-direction: column;
   }
 
-  .roster-stage__card {
+  .roster-stage__brief {
     right: var(--space-4);
     left: var(--space-4);
   }

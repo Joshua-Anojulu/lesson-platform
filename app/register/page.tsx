@@ -41,6 +41,20 @@ export default async function RegisterPage({
             <span>No birthdate</span>
             <span>No school field</span>
           </div>
+          <ol className="register-intro__steps">
+            <li>
+              <strong>Send one private request.</strong>
+              <span>Only the details on this form, nothing more.</span>
+            </li>
+            <li>
+              <strong>The coordinator makes the introduction.</strong>
+              <span>Your request goes to the pilot coordinator privately.</span>
+            </li>
+            <li>
+              <strong>Schedule directly with the teacher.</strong>
+              <span>Times and rates are arranged between you.</span>
+            </li>
+          </ol>
           <div className="register-intro__media">
             <Image
               src="/images/sheet-music-band-hall.webp"
